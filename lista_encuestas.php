@@ -6,8 +6,7 @@ $tabla = "{$wpdb->prefix}encuestas";
 $tabla2  = "{$wpdb->prefix}encuestas_detalle";
 
 //Inserción en la base de datos
-if (isset($_POST{
-    "btnguardar"})) {
+if (isset($_POST["btnguardar"])) {
     $preguntas = $_POST["name"];
     $tipos = $_POST["type"];
     $nombre = $_POST["txtnombre"];

@@ -121,8 +121,33 @@ function encolarJs($hook) {
         return ;
     }
     wp_enqueue_script("JsExterno", plugins_url("js/lista_encuestas.js", __FILE__), array("jquery"));
+    wp_localize_script('JsExterno', 'solicitudesAjax', [
+        'url' => admin_url('admin-ajax.php'),
+        'seguridad' => wp_create_nonce('seg')
+    ]);
 }
 add_action("admin_enqueue_scripts", "encolarJs");
+
+//AJAX
+function eliminarEncuesta() {
+    $nonce = $_POST["nonce"];
+    if (!wp_verify_nonce($nonce, 'seg')) {
+        die('No tienes permiso para ejecutar ese Ajax');
+    }
+
+    $id = $_POST["id"];
+
+    global $wpdb;
+    $tabla = "{$wpdb->prefix}encuestas";
+    $tabla2  = "{$wpdb->prefix}encuestas_detalle";
+    //Nombre de la tabla, where, 
+    $wpdb -> delete($tabla, array("EncuestaId" => $id));
+    $wpdb -> delete($tabla2, array("EncuestaId" => $id));
+    return true;
+}
+
+//El primer elemento tiene que coincidir con lo que pusimos en el ajax, en el action:
+add_action("wp_ajax_peticioEliminar", "eliminarEncuesta");
 
 
  
