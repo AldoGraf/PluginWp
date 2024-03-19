@@ -7,6 +7,8 @@
  *
  * @return void
  */
+//Requires
+ require_once dirname(__FILE__) . '/clases.shortcodes.php';
 
 /**
  * Funcion que hará algo cuando el cliente le de a activar plugin desde Wordpress
