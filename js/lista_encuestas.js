@@ -36,6 +36,9 @@ jQuery(document).ready(($) => {
   });
   $(document).on("click", "a[data-id]", () => {
     let id = this.data("id")
+
+
+    console.log("xd")
     console.log(id)
   })
 });
