@@ -46,6 +46,7 @@ jQuery(document).ready(($) => {
         id: id,
       },
       success: function () {
+        //Cuando le de al botón recargo la página
         location.reload()
       }
     });

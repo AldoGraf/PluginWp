@@ -13,7 +13,7 @@ if (isset($_POST["btnguardar"])) {
     $query = "SELECT EncuestaId FROM $tabla ORDER BY EncuestaId DESC limit 1";
     $resultado = $wpdb->get_results($query, ARRAY_A);
     $proximoId = $resultado[0]["EncuestaId"] + 1;
-    $shortcode = '[ENC_' .  $proximoId . ']';
+    $shortcode = "[ENC id='$proximoId']";
 
     //Datos para la tabla wp_encuestas
     $datos = [

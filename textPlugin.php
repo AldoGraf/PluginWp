@@ -8,7 +8,7 @@
  * @return void
  */
 //Requires
- require_once dirname(__FILE__) . '/clases.shortcodes.php';
+ require_once dirname(__FILE__) . '/clases/ShortCode.php';
 
 /**
  * Funcion que hará algo cuando el cliente le de a activar plugin desde Wordpress
@@ -152,4 +152,15 @@ function eliminarEncuesta() {
 add_action("wp_ajax_peticioEliminar", "eliminarEncuesta");
 
 
+//Inserción de shortcode
+
+//Si mandamos por parámetro $atts, wordpresss coge los parámetros que se manda por el shortcodde
+function imprimirShortcode($atts){
+    $shortcode = new ShortCode();
+    $id = $atts["id"];
+    $html = $shortcode -> armado($id);
+    return $html;
+}
+
+add_shortcode("ENC", "imprimirShortcode");
  
