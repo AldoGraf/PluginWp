@@ -53,7 +53,7 @@ class ShortCode
         ";
         return $html;
     }
-
+    
     public function formContent($id, $question, $type)
     {
         $html = "";

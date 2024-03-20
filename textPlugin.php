@@ -162,5 +162,5 @@ function imprimirShortcode($atts){
     return $html;
 }
 
+//Añadiendo el shortcode
 add_shortcode("ENC", "imprimirShortcode");
- 
